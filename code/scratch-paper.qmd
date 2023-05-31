@@ -30,6 +30,7 @@ library(broom)
 library(corrplot)
 library(AICcmodavg)
 library(GGally)
+library(MuMIn)
 
 
 ```
@@ -95,7 +96,7 @@ null <- lm(totmass ~ 1, data = plant_subset)
 full <- lm(totmass ~ species + feedlevel + sla + chlorophyll + amass + num_lvs + num_phylls, data = plant_subset )
 ```
 
-We visually assess normality and homoskedasticity of residuals using diagnostic plots for the full model.
+We visually assess normality and homoscedasticity of residuals using diagnostic plots for the full model.
 
 ```{r full-diagnostics}
 par(mfrow =c(2,2))
@@ -115,6 +116,7 @@ check_heteroscedasticity(full)
 Create a new full log object
 
 ```{r}
+null_log <- lm(log(totmass) ~ 1, data = plant_subset)
 full_log <- lm(log(totmass) ~ species + feedlevel + sla + chlorophyll + amass + num_lvs + num_phylls, data = plant_subset)
 plot(full_log)
 
@@ -122,3 +124,95 @@ plot(full_log)
 check_normality(full_log)
 check_heteroscedasticity(full_log)
 ```
+
+Evaluate multicollinearity:
+
+```{r multicollinearity}
+car::vif(full_log)
+```
+
+We evaluated multicollinearity by calculating generalized variance inflation factor and determined that \[...\]
+
+Try some more models:
+
+Adressing the question: what set of predictor variables best explains the response? (which ones maximize the variance)
+
+```{r}
+model2_log <- lm(log(totmass) ~ species, data = plant_subset)
+```
+
+check assumptions for model 2:
+
+```{r}
+plot(model2_log)
+
+#checking normality and heteroscedasticity assumptions with Shapiro-Wilk
+check_normality(model2_log)
+check_heteroscedasticity(model2_log)
+```
+
+Compare models using Akaike's Information criterion (AIC) values:
+
+```{r}
+AICc(full_log)
+AICc(model2_log)
+AICc(null_log)
+
+# or MuMIn call for table of answers
+MuMIn::AICc(full_log, model2_log, null_log)
+# model selection table (also tells you which predictor is least complex *and lower*)
+MuMIn::model.sel(full_log, model2_log, null_log)
+```
+
+AIC Full model = 134
+
+AIC Model 2 = 158
+
+AIC Null model = 306
+
+The least complex that best predicts the response is the predictor with the **lowest** value (so full model). Must find biological comparison against full model and null model to find which makes better sense?
+
+We compared models using AIC and chose the model with the lowest value, which was \[...\]
+
+### Writing up some results:
+
+We found that the \_\_\_ model including \_\_\_ \_\_\_ \_\_\_ predictors best predicted \_\_\_\_ (model summary).
+
+```{r}
+summary(full_log)
+
+# table woth confidence intervals 
+table <- tidy(full_log, conf.int = TRUE) %>% 
+  # change the p-value number if they are really small
+  # change the estimates, standard error, t-statstics to round to ___ digits
+  # using mutate
+  # make into a flextable
+  flextable() %>% 
+  # fit it to the viewer
+  autofit()
+table
+```
+
+use `ggpredict()`to backtransform estimates back to exponential (not log) to report it on the scale of the original variables:
+
+```{r}
+model_pred <- ggpredict(full_log, terms = "species", back.transform = TRUE)
+
+plot(ggpredict(full_log, terms = "species", back.transform = TRUE), add.data = TRUE)
+
+plot(ggpredict(full_log, terms = "chlorophyll", back.transform = TRUE), add.data = TRUE)
+
+plot(ggpredict(full_log, terms = "sla", back.transform = TRUE), add.data = TRUE)
+
+model_pred
+```
+
+All else held constant (of the adjusted levels in purple), total biomass of all species to remain within the range of Confidence Interval
+
+Diff. types of ANOVA tables (not needed for homework):
+
+type 1 ANOVA: order of variables matter
+
+type 2 ANOVA: order doesnt matter but there might be some sort of interaction
+
+type 3 ANOVA:
