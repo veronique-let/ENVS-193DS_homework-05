@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Veronique Letourneau">
+
+<title>Homework 5</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="homework5_files/libs/clipboard/clipboard.min.js"></script>
+<script src="homework5_files/libs/quarto-html/quarto.js"></script>
+<script src="homework5_files/libs/quarto-html/popper.min.js"></script>
+<script src="homework5_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="homework5_files/libs/quarto-html/anchor.min.js"></script>
+<link href="homework5_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="homework5_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="homework5_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="homework5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="homework5_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="homework5_files/libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+<script src="homework5_files/libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results:</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Homework 5</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Veronique Letourneau </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="links" class="level4">
+<h4 class="anchored" data-anchor-id="links">Links</h4>
+<p>GitHub Repo: https://github.com/veronique-let/ENVS-193DS_homework-05</p>
+<p>https://github.com/veronique-let/ENVS-193DS_homework-05.git</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
+<p>Sarracenia, a carnivorous plant commonly referred to as pitcher plant and indigenous to the North American region, exhibits distinct leaf morphologies that act as entrapments for arthropods (Glenn et al., 2012). The study of these plants is significant in terms of ecological value as they are threatened over much of their geographic range and are studied for their contributions towards wetland health (Wang et al., 2004). An investigation into the predictions around Serracenia biomass by evaluating characteristics like form and function (morphological), and biochemical properties (physiological) along with taxonomy can give insights about growth sequences and could help assist in population assessment while predicting responses under varying environmental conditions (Ellison et al., 2004). This research analysis focuses on Sarracenia’s mass prediction by observing correlations between characteristic such as the number of leaves, feed level and physiological markers including chlorophyll content/photosynthetic rates vis-à-vis its biomass parameters which are hypothesized to be positively associated to answer the question: How do Sarracenia characteristics predict biomass? The analysis of biomass prediction in Sarracenia can therefore enhance conservation efforts and contribute to our understanding of wetland ecosystems.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>The data collection retrieved from the EDI Portal involved a manipulative feeding experiment to test the relationships between morphological and physiological characteristics of carnivorous plants, specifically examining how these relationships resemble those of non-carnivorous plants when nutrients are not limited (Ellison &amp; Farnsworth, 2021). Variables such as photosynthetic rate, chlorophyll fluorescence, growth, architecture, and foliar nutrient and chlorophyll content were investigated. The dataset consisted of 120 observations and 32 variables (Ellison &amp; Farnsworth, 2021), which we have processed using a quarto document in RStudio to select relevant columns for our analysis. Visualizing the presence of missing values in the data allowed us to eliminate N/A’s for testing accuracy. Then, priliminary analysis of the data was performed using Pearson’s r followed by its corresponding correlation plot and pairs plot to visualize the relationships between variables.</p>
+<p>Upon generating the visualization plots, we constructed both a null and full model. The former serves the purpose of exhibiting an anticipated absence of variables’ impact on the dataset whereas the latter outlines individual effects that each variable has on the response. As part of the analysis, we conducted assessments pertaining to the assumptions of normality as well as the homoscedasticity of residuals for each model. We then transformed our models into log models in order to meet the assumptions of constant variance and linearity, before creating three additional models (containing different predictors) and selecting the best predictor model for the response. Additional information pertaining to each step of the analysis is given in each sub section below.</p>
+<section id="setting-up" class="level4">
+<h4 class="anchored" data-anchor-id="setting-up">Setting up</h4>
+<p>Loading in libraries</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># should haves</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeffects)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar) </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable) </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># would be nice to have</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AICcmodavg)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Reading in the data</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plant <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"knb-lter-hfr.109.18"</span>, <span class="st">"hf109-01-sarracenia.csv"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make the column names cleaner</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># selecting the columns of interest</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(totmass, species, feedlevel, sla, chlorophyll, amass, num_lvs, num_phylls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="c.-visualizing-missing-data" class="level4">
+<h4 class="anchored" data-anchor-id="c.-visualizing-missing-data">c.&nbsp;Visualizing missing data:</h4>
+<p>We plotted the visualization of missing data to demonstrate that the absence of variables in this dataset can influence the data. The presence of a significant amount of missing data pertaining to chlorophyll, biomass, and specific leaf area can compromise the accuracy of the results obtained from it.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gg_miss_var</span>(plant) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Missing Data Visualization"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Missing data for chlorophyll, biomass and specific leaf area"</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>, <span class="at">hjust=</span><span class="fl">0.5</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/missing-data-visualization-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To avoid missing values skewing the analysis of a data, we subset the data by dropping N/A’s to increase the accuracy of our analysis of available data.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plant_subset <span class="ot">&lt;-</span> plant <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(sla, chlorophyll, amass, num_phylls, num_lvs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="d.-creating-a-correlation-plot" class="level4">
+<h4 class="anchored" data-anchor-id="d.-creating-a-correlation-plot">d.&nbsp;Creating a correlation plot:</h4>
+<p>We calculated Pearson’s r and visually represented correlation using a correlation plot in order to determine the relationships between numerical variables in our data set. The plot demonstrates the association among diverse variables, where a value of +1 represents a constructive correlation and -1 denotes an opposite correlation (whereas 0 indicates no correlation).</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate Pearson's r for numerical values ONLY</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plant_cor <span class="ot">&lt;-</span> plant_subset <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all column b/w feedlevel and num_phylls</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(feedlevel<span class="sc">:</span>num_phylls) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cor()  = correlation</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a correlation plot</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(plant_cor, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>         <span class="co">#change the shape of what's in the cells </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">method =</span> <span class="st">"ellipse"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>         <span class="co">#adding variables over shape </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">addCoef.col =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/correlation-plot-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="e.-creating-a-pairs-plot" class="level4">
+<h4 class="anchored" data-anchor-id="e.-creating-a-pairs-plot">e. Creating a pairs plot:</h4>
+<p>We created a visualization of the relationships between variables by using a pairs plot to compare each variable against the others. In this figure, each graphical representation depicts distinct variables charted against each other. The linear plots that run diagonally exhibit the density correlation for individual variables, whereas the graphs presented in both the top and leftmost rows display an association between species and respective variable. In addition, above-diagonal squares depict Pearson correlations, while the below-diagonal plots compare two different variables through scatter plot analysis.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plant_subset <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species<span class="sc">:</span>num_phylls) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/pairs-plot-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="f.-setting-up-models" class="level4">
+<h4 class="anchored" data-anchor-id="f.-setting-up-models">f.&nbsp;Setting up models:</h4>
+<p>We fit multiple linear models (full and null models) in order to determine how species and physiological characteristics (or lack thereof) predict biomass.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use 1 as the predictor</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>null <span class="ot">&lt;-</span> <span class="fu">lm</span>(totmass <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> plant_subset)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lm</span>(totmass <span class="sc">~</span> species <span class="sc">+</span> feedlevel <span class="sc">+</span> sla <span class="sc">+</span> chlorophyll <span class="sc">+</span> amass <span class="sc">+</span> num_lvs <span class="sc">+</span> num_phylls, <span class="at">data =</span> plant_subset )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="g.-visual-and-statistical-assumption-checks-for-the-full-model" class="level4">
+<h4 class="anchored" data-anchor-id="g.-visual-and-statistical-assumption-checks-for-the-full-model">g. Visual and statistical assumption checks for the full model:</h4>
+<p>We visually assessed the normality and homoscedasticity of residuals using diagnostic plots for the full model.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of our full model</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/full-diagnostics-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The full model assumption plots show the lack of normality and heteroscedasticity spread of residuals. Therefore, to double check our assumptions, we tested for normality using the Shapiro-Wilk test (null hypothesis: variable of interest (i.e.&nbsp;the residuals) are normally distributed). As well as tested for homoscedasticity using the Breusch-Pagan test (null hypothesis: variable of interest (i.e.&nbsp;the residuals) have constant variance).</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check normality and heteroscedasticity of our full model</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: Heteroscedasticity (non-constant error variance) detected (p &lt; .001).</code></pre>
+</div>
+</div>
+</section>
+<section id="h.-creating-new-full-and-null-log-objects-and-checking-normality-and-heteroscedasticity" class="level4">
+<h4 class="anchored" data-anchor-id="h.-creating-new-full-and-null-log-objects-and-checking-normality-and-heteroscedasticity">h. Creating new full and null log objects and checking normality and heteroscedasticity:</h4>
+<p>Since the assumptions were not met above, we transformed our models into log models in order to meet the assumptions of constant variance and linearity. A second Shapiro-Wilk test and Breusch-Pagan test is performed to validate our transformation.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>null_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(totmass) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> plant_subset)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>full_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(totmass) <span class="sc">~</span> species <span class="sc">+</span> feedlevel <span class="sc">+</span> sla <span class="sc">+</span> chlorophyll <span class="sc">+</span> amass <span class="sc">+</span> num_lvs <span class="sc">+</span> num_phylls, <span class="at">data =</span> plant_subset)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of our full log model</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(full_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check normality of our full log model using Shapiro-Wilk test </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(full_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OK: residuals appear as normally distributed (p = 0.107).</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and heteroscedasticity using the Breusch-Pagan test</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(full_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OK: Error variance appears to be homoscedastic (p = 0.071).</code></pre>
+</div>
+</div>
+</section>
+<section id="i.-model-construction-with-visual-and-statistical-assumption-checks-for-three-additional-models" class="level4">
+<h4 class="anchored" data-anchor-id="i.-model-construction-with-visual-and-statistical-assumption-checks-for-three-additional-models">i. Model construction with visual and statistical assumption checks for three additional models:</h4>
+<p>The first additional model uses the predictor variable ‘species’, while the response variable is (log(totmass)). The ‘species’ predictor was chosen to see if the species of the plant affects the total mass of the plant as we hypothesized that different species are genetically predisposed to their height and weight which would affect their total biomass.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model2_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(totmass) <span class="sc">~</span> species, <span class="at">data =</span> plant_subset)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting model 2 log using species as predictor variable</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2_log) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/model-2-log-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking normality of our model2_log with Shapiro-Wilk test</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(model2_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OK: residuals appear as normally distributed (p = 0.374).</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and heteroscedasticity using the Breusch-Pagan test</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(model2_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OK: Error variance appears to be homoscedastic (p = 0.100).</code></pre>
+</div>
+</div>
+<p>The second additional model uses the predictor variable ‘chlorophyll’, while the response variable is (log(totmass)). The ‘chlorophyll’ predictor was chosen to see if amount of chlorophyll in the plants affects the total mass of the plant as we hypothesized that the amount of chlorophyll produced by the plant influences biomass due to the associated sugar production in the photosynthetic process.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model3_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(totmass) <span class="sc">~</span> chlorophyll, <span class="at">data =</span> plant_subset)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting model 3 log using chlorophyll as predictor variable</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model3_log) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/model-3-log-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking normality of our model3_log with Shapiro-Wilk test</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(model3_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: Non-normality of residuals detected (p = 0.002).</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and heteroscedasticity using the Breusch-Pagan test</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(model3_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OK: Error variance appears to be homoscedastic (p = 0.546).</code></pre>
+</div>
+</div>
+<p>The third (last) additional model uses the predictor variables ‘species’, ‘feedlevel’, ‘sla’, ‘chlorophyll’, ‘num_lvs’ and ‘num_phylls’ , while the response variable is (log(totmass)). These predictors were chosen to see how the overall combination of these predictors affects the total biomass of the plant as we hypothesized that total biomass is influenced by multiple predictors rather than only one. Hence, as opposed to the full model, ‘amass’ was omitted in this model to observe the influence of its absence on the response variable.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>model4_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(totmass) <span class="sc">~</span> species <span class="sc">+</span> feedlevel <span class="sc">+</span> sla <span class="sc">+</span> chlorophyll <span class="sc">+</span> num_lvs <span class="sc">+</span> num_phylls, <span class="at">data =</span> plant_subset)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting model 3 log using chlorophyll as predictor variable</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model4_log) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/model-4-log-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking normality of our model4_log with Shapiro-Wilk test</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(model4_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OK: residuals appear as normally distributed (p = 0.075).</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and heteroscedasticity using the Breusch-Pagan test</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(model4_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OK: Error variance appears to be homoscedastic (p = 0.054).</code></pre>
+</div>
+</div>
+</section>
+<section id="j.-evaluating-multicollinearity" class="level4">
+<h4 class="anchored" data-anchor-id="j.-evaluating-multicollinearity">j. Evaluating multicollinearity:</h4>
+<p>We assessed multicollinearity by computing the generalized variance inflation factor for the full model and found that species exhibits the greatest GVIF value, indicating a substantial level of multicollinearity with other predictor variables. The inflated factors score is 1.23, which implies that due to multicollinearity, the standard error has increased by a factor of 1.23. Consequently, interpreting both individual effects of predictor variables and response variable becomes more difficult as species showcases an elevated degree of collinear association between these parameters.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(full_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 GVIF Df GVIF^(1/(2*Df))
+species     42.351675  9        1.231351
+feedlevel    1.621993  1        1.273575
+sla          1.999989  1        1.414210
+chlorophyll  1.949828  1        1.396362
+amass        2.872084  1        1.694722
+num_lvs      2.813855  1        1.677455
+num_phylls   2.995510  1        1.730754</code></pre>
+</div>
+</div>
+</section>
+<section id="k.-comparing-models" class="level4">
+<h4 class="anchored" data-anchor-id="k.-comparing-models">k. Comparing models:</h4>
+<p>We compared our five log models using Akaike’s Information criterion (AIC) in order to observe which set of predictors best predicts the response. The least complex that best predicts the response is the predictor with the <strong>lowest</strong> value, which is Model 4 in this case (AIC = 132, in comparison to AIC = 134 for the Full Model).</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing all five log models (full, null, model 2, model 3 and model 4)</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># MuMIn call for table of Akike's Information criterion values (AIC) values</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>MuMIn<span class="sc">::</span><span class="fu">AICc</span>(full_log, null_log, model2_log, model3_log, model4_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>           df     AICc
+full_log   17 133.9424
+null_log    2 306.0028
+model2_log 11 157.5751
+model3_log  3 307.3680
+model4_log 16 131.7899</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model selection table (tells me which predictor is least complex *and lower*)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>MuMIn<span class="sc">::</span><span class="fu">model.sel</span>(full_log, null_log, model2_log, model3_log, model4_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model selection table 
+             (Int)      ams      chl     fdl num_lvs  num_phy       sla spc df
+model4_log -1.4160          0.004572 -0.4411 0.09005 -0.03585 -0.002139   + 16
+full_log   -1.3390 0.002338 0.004368 -0.4743 0.09176 -0.03959 -0.002493   + 17
+model2_log  0.8836                                                        + 11
+null_log    1.3500                                                           2
+model3_log  0.4650          0.001877                                         3
+             logLik  AICc  delta weight
+model4_log  -46.732 131.8   0.00  0.746
+full_log    -46.371 133.9   2.15  0.254
+model2_log  -66.337 157.6  25.79  0.000
+null_log   -150.941 306.0 174.21  0.000
+model3_log -150.563 307.4 175.58  0.000
+Models ranked by AICc(x) </code></pre>
+</div>
+</div>
+<p>AIC Full model = 134</p>
+<p>AIC Null model = 306</p>
+<p>AIC Model 2 = 158</p>
+<p>AIC Model 3 = 307</p>
+<p><strong>AIC Model 4 = 132</strong></p>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results:</h2>
+<p>We found that the fourth model (model4_log) which includes all predictor variables apart from ‘amass’ (mass-based light-saturated photosynthetic rate of the youngest leaf) best predicted total biomass in Sarracenia. This model was chosen due to it having the lowest AIC value across all other values, which in comparison to the full model including all of the predictors, model 4 has a difference in AIC value of 2. Because of this, we can conclude that model 4 demonstrates that there is a significant relationship between most of the response variables and the total biomass since the p-value is less than 0.05 (2.2e-16). With all of the p-values, except for species and feed level, being less than 0.05, this explains biologically that the combination of these predictors affects the total biomass of the plant more than just one. In addition to the model 4 results, we created a visualization of model predictions for biomass as the predictor variable and species as the response in order to observe how the Sarrencia species is correlated to biomass. The visualization shows that the Leucophylla species have the highest biomass, further demonstrating a correlation between the characteristics of the plants and improving our understanding of the relationship between different predictor variables and total biomass in Sarracenia.</p>
+<p>Creating a summary table of Model 4</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model4_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = log(totmass) ~ species + feedlevel + sla + chlorophyll + 
+    num_lvs + num_phylls, data = plant_subset)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.9201 -0.1903  0.0378  0.2146  0.8081 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)        -1.416411   0.588187  -2.408 0.018123 *  
+speciesalata        1.141030   0.180142   6.334 9.83e-09 ***
+speciesflava        1.423339   0.261279   5.448 4.58e-07 ***
+speciesjonesii      0.321324   0.195981   1.640 0.104666    
+speciesleucophylla  1.742155   0.223143   7.807 1.14e-11 ***
+speciesminor        0.404790   0.186446   2.171 0.032617 *  
+speciespsittacina  -1.645580   0.206577  -7.966 5.44e-12 ***
+speciespurpurea    -0.411356   0.246635  -1.668 0.098896 .  
+speciesrosea       -0.836500   0.218074  -3.836 0.000235 ***
+speciesrubra        0.938543   0.178576   5.256 1.02e-06 ***
+feedlevel          -0.441063   0.230113  -1.917 0.058519 .  
+sla                -0.002139   0.001066  -2.007 0.047854 *  
+chlorophyll         0.004572   0.001158   3.947 0.000159 ***
+num_lvs             0.090046   0.022256   4.046 0.000112 ***
+num_phylls         -0.035846   0.051379  -0.698 0.487217    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.4121 on 88 degrees of freedom
+Multiple R-squared:  0.8678,    Adjusted R-squared:  0.8468 
+F-statistic: 41.26 on 14 and 88 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">tidy</span>(model4_log, <span class="at">conf.int =</span> <span class="cn">TRUE</span>, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make it into a flextable</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit it to the viewer</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>()</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div class="tabwid"><style>.cl-5294a49c{}.cl-52836420{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-528bf78e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-528bf798{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-528c18fe{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1908{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1912{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1913{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1914{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c191c{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c191d{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c191e{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1926{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1927{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1930{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1931{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1932{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c193a{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c193b{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c193c{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1944{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1945{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c194e{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c194f{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1958{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1959{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1962{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c196c{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c196d{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1976{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1977{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1978{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1980{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1981{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1982{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c198a{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c198b{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1994{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c1995{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c199e{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c199f{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19a8{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19a9{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19aa{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19b2{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19bc{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19c6{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19d0{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19d1{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19d2{width:1.568in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19da{width:1.007in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19e4{width:1.177in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19e5{width:1.058in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-528c19e6{width:1.942in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-5294a49c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-528c18fe"><p class="cl-528bf78e"><span class="cl-52836420">term</span></p></th><th class="cl-528c1908"><p class="cl-528bf798"><span class="cl-52836420">estimate</span></p></th><th class="cl-528c1912"><p class="cl-528bf798"><span class="cl-52836420">std.error</span></p></th><th class="cl-528c1913"><p class="cl-528bf798"><span class="cl-52836420">statistic</span></p></th><th class="cl-528c1914"><p class="cl-528bf798"><span class="cl-52836420">p.value</span></p></th><th class="cl-528c1908"><p class="cl-528bf798"><span class="cl-52836420">conf.low</span></p></th><th class="cl-528c1908"><p class="cl-528bf798"><span class="cl-52836420">conf.high</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-528c191c"><p class="cl-528bf78e"><span class="cl-52836420">(Intercept)</span></p></td><td class="cl-528c191d"><p class="cl-528bf798"><span class="cl-52836420">0.2425831</span></p></td><td class="cl-528c191e"><p class="cl-528bf798"><span class="cl-52836420">0.588186899</span></p></td><td class="cl-528c1926"><p class="cl-528bf798"><span class="cl-52836420">-2.4080968</span></p></td><td class="cl-528c1927"><p class="cl-528bf798"><span class="cl-52836420">0.018123036779720682</span></p></td><td class="cl-528c191d"><p class="cl-528bf798"><span class="cl-52836420">0.0753728</span></p></td><td class="cl-528c191d"><p class="cl-528bf798"><span class="cl-52836420">0.7807400</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1930"><p class="cl-528bf78e"><span class="cl-52836420">speciesalata</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">3.1299918</span></p></td><td class="cl-528c1932"><p class="cl-528bf798"><span class="cl-52836420">0.180141519</span></p></td><td class="cl-528c193a"><p class="cl-528bf798"><span class="cl-52836420">6.3340778</span></p></td><td class="cl-528c193b"><p class="cl-528bf798"><span class="cl-52836420">0.000000009830700015</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">2.1881074</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">4.4773162</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c193c"><p class="cl-528bf78e"><span class="cl-52836420">speciesflava</span></p></td><td class="cl-528c1944"><p class="cl-528bf798"><span class="cl-52836420">4.1509587</span></p></td><td class="cl-528c1945"><p class="cl-528bf798"><span class="cl-52836420">0.261279078</span></p></td><td class="cl-528c194e"><p class="cl-528bf798"><span class="cl-52836420">5.4475825</span></p></td><td class="cl-528c194f"><p class="cl-528bf798"><span class="cl-52836420">0.000000458397292905</span></p></td><td class="cl-528c1944"><p class="cl-528bf798"><span class="cl-52836420">2.4697133</span></p></td><td class="cl-528c1944"><p class="cl-528bf798"><span class="cl-52836420">6.9767039</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1958"><p class="cl-528bf78e"><span class="cl-52836420">speciesjonesii</span></p></td><td class="cl-528c1959"><p class="cl-528bf798"><span class="cl-52836420">1.3789518</span></p></td><td class="cl-528c1962"><p class="cl-528bf798"><span class="cl-52836420">0.195980889</span></p></td><td class="cl-528c196c"><p class="cl-528bf798"><span class="cl-52836420">1.6395661</span></p></td><td class="cl-528c196d"><p class="cl-528bf798"><span class="cl-52836420">0.104665656188668063</span></p></td><td class="cl-528c1959"><p class="cl-528bf798"><span class="cl-52836420">0.9341230</span></p></td><td class="cl-528c1959"><p class="cl-528bf798"><span class="cl-52836420">2.0356078</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1976"><p class="cl-528bf78e"><span class="cl-52836420">speciesleucophylla</span></p></td><td class="cl-528c1977"><p class="cl-528bf798"><span class="cl-52836420">5.7096366</span></p></td><td class="cl-528c1978"><p class="cl-528bf798"><span class="cl-52836420">0.223142504</span></p></td><td class="cl-528c1980"><p class="cl-528bf798"><span class="cl-52836420">7.8073668</span></p></td><td class="cl-528c1981"><p class="cl-528bf798"><span class="cl-52836420">0.000000000011444365</span></p></td><td class="cl-528c1977"><p class="cl-528bf798"><span class="cl-52836420">3.6645537</span></p></td><td class="cl-528c1977"><p class="cl-528bf798"><span class="cl-52836420">8.8960221</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1930"><p class="cl-528bf78e"><span class="cl-52836420">speciesminor</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">1.4989871</span></p></td><td class="cl-528c1932"><p class="cl-528bf798"><span class="cl-52836420">0.186446329</span></p></td><td class="cl-528c193a"><p class="cl-528bf798"><span class="cl-52836420">2.1710784</span></p></td><td class="cl-528c193b"><p class="cl-528bf798"><span class="cl-52836420">0.032616880915058939</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">1.0348606</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">2.1712705</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1930"><p class="cl-528bf78e"><span class="cl-52836420">speciespsittacina</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">0.1929007</span></p></td><td class="cl-528c1932"><p class="cl-528bf798"><span class="cl-52836420">0.206577203</span></p></td><td class="cl-528c193a"><p class="cl-528bf798"><span class="cl-52836420">-7.9659302</span></p></td><td class="cl-528c193b"><p class="cl-528bf798"><span class="cl-52836420">0.000000000005439276</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">0.1279509</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">0.2908200</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1930"><p class="cl-528bf78e"><span class="cl-52836420">speciespurpurea</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">0.6627508</span></p></td><td class="cl-528c1932"><p class="cl-528bf798"><span class="cl-52836420">0.246635363</span></p></td><td class="cl-528c193a"><p class="cl-528bf798"><span class="cl-52836420">-1.6678720</span></p></td><td class="cl-528c193b"><p class="cl-528bf798"><span class="cl-52836420">0.098895985334242612</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">0.4059634</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">1.0819660</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1930"><p class="cl-528bf78e"><span class="cl-52836420">speciesrosea</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">0.4332241</span></p></td><td class="cl-528c1932"><p class="cl-528bf798"><span class="cl-52836420">0.218074387</span></p></td><td class="cl-528c193a"><p class="cl-528bf798"><span class="cl-52836420">-3.8358482</span></p></td><td class="cl-528c193b"><p class="cl-528bf798"><span class="cl-52836420">0.000234842152805077</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">0.2808661</span></p></td><td class="cl-528c1931"><p class="cl-528bf798"><span class="cl-52836420">0.6682298</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1958"><p class="cl-528bf78e"><span class="cl-52836420">speciesrubra</span></p></td><td class="cl-528c1959"><p class="cl-528bf798"><span class="cl-52836420">2.5562549</span></p></td><td class="cl-528c1962"><p class="cl-528bf798"><span class="cl-52836420">0.178576377</span></p></td><td class="cl-528c196c"><p class="cl-528bf798"><span class="cl-52836420">5.2556966</span></p></td><td class="cl-528c196d"><p class="cl-528bf798"><span class="cl-52836420">0.000001019827076707</span></p></td><td class="cl-528c1959"><p class="cl-528bf798"><span class="cl-52836420">1.7925877</span></p></td><td class="cl-528c1959"><p class="cl-528bf798"><span class="cl-52836420">3.6452549</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1982"><p class="cl-528bf78e"><span class="cl-52836420">feedlevel</span></p></td><td class="cl-528c198a"><p class="cl-528bf798"><span class="cl-52836420">0.6433520</span></p></td><td class="cl-528c198b"><p class="cl-528bf798"><span class="cl-52836420">0.230113356</span></p></td><td class="cl-528c1994"><p class="cl-528bf798"><span class="cl-52836420">-1.9167214</span></p></td><td class="cl-528c1995"><p class="cl-528bf798"><span class="cl-52836420">0.058518540462089354</span></p></td><td class="cl-528c198a"><p class="cl-528bf798"><span class="cl-52836420">0.4072349</span></p></td><td class="cl-528c198a"><p class="cl-528bf798"><span class="cl-52836420">1.0163713</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c199e"><p class="cl-528bf78e"><span class="cl-52836420">sla</span></p></td><td class="cl-528c199f"><p class="cl-528bf798"><span class="cl-52836420">0.9978632</span></p></td><td class="cl-528c19a8"><p class="cl-528bf798"><span class="cl-52836420">0.001065964</span></p></td><td class="cl-528c19a9"><p class="cl-528bf798"><span class="cl-52836420">-2.0066698</span></p></td><td class="cl-528c19aa"><p class="cl-528bf798"><span class="cl-52836420">0.047854470339070518</span></p></td><td class="cl-528c199f"><p class="cl-528bf798"><span class="cl-52836420">0.9957516</span></p></td><td class="cl-528c199f"><p class="cl-528bf798"><span class="cl-52836420">0.9999793</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c1976"><p class="cl-528bf78e"><span class="cl-52836420">chlorophyll</span></p></td><td class="cl-528c1977"><p class="cl-528bf798"><span class="cl-52836420">1.0045821</span></p></td><td class="cl-528c1978"><p class="cl-528bf798"><span class="cl-52836420">0.001158194</span></p></td><td class="cl-528c1980"><p class="cl-528bf798"><span class="cl-52836420">3.9471842</span></p></td><td class="cl-528c1981"><p class="cl-528bf798"><span class="cl-52836420">0.000158814428286257</span></p></td><td class="cl-528c1977"><p class="cl-528bf798"><span class="cl-52836420">1.0022725</span></p></td><td class="cl-528c1977"><p class="cl-528bf798"><span class="cl-52836420">1.0068969</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c19b2"><p class="cl-528bf78e"><span class="cl-52836420">num_lvs</span></p></td><td class="cl-528c19bc"><p class="cl-528bf798"><span class="cl-52836420">1.0942245</span></p></td><td class="cl-528c19c6"><p class="cl-528bf798"><span class="cl-52836420">0.022256261</span></p></td><td class="cl-528c19d0"><p class="cl-528bf798"><span class="cl-52836420">4.0458665</span></p></td><td class="cl-528c19d1"><p class="cl-528bf798"><span class="cl-52836420">0.000111655874291731</span></p></td><td class="cl-528c19bc"><p class="cl-528bf798"><span class="cl-52836420">1.0468820</span></p></td><td class="cl-528c19bc"><p class="cl-528bf798"><span class="cl-52836420">1.1437079</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-528c19d2"><p class="cl-528bf78e"><span class="cl-52836420">num_phylls</span></p></td><td class="cl-528c19da"><p class="cl-528bf798"><span class="cl-52836420">0.9647889</span></p></td><td class="cl-528c19e4"><p class="cl-528bf798"><span class="cl-52836420">0.051378886</span></p></td><td class="cl-528c19e5"><p class="cl-528bf798"><span class="cl-52836420">-0.6976788</span></p></td><td class="cl-528c19e6"><p class="cl-528bf798"><span class="cl-52836420">0.487217407023181615</span></p></td><td class="cl-528c19da"><p class="cl-528bf798"><span class="cl-52836420">0.8711416</span></p></td><td class="cl-528c19da"><p class="cl-528bf798"><span class="cl-52836420">1.0685032</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<section id="c.-visualization-of-model-predictions-for-biomass-as-the-predictor-variable" class="level4">
+<h4 class="anchored" data-anchor-id="c.-visualization-of-model-predictions-for-biomass-as-the-predictor-variable">c.&nbsp;Visualization of model predictions for biomass as the predictor variable</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating model of backtransformed `species`</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>model_pred <span class="ot">&lt;-</span> <span class="fu">ggpredict</span>(model4_log, <span class="at">terms =</span> <span class="st">"species"</span>, <span class="at">back.transform =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ggpredict plot with species as response</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ggpredict</span>(model4_log, <span class="at">terms =</span> <span class="st">"species"</span>, <span class="at">back.transform =</span> <span class="cn">TRUE</span>), <span class="at">add.data =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># adding title/caption</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Visualization of model predictions for biomass as the predictor variable"</span>,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Visualization of the relationship between species and biomass, showing a strong correlation between the predictor biomass and species response."</span>) <span class="sc">+</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co"># caption plot size</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="fl">5.5</span>, <span class="at">hjust=</span><span class="fl">0.5</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="homework5_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Ellison, A. M., Buckley, H. L., Miller, T. E., &amp; Gotelli, N. J. (2004). Morphological variation in Sarracenia purpurea (Sarraceniaceae): geographic, environmental, and taxonomic correlates. American Journal of Botany, 91(11), 1930–1935. <a href="https://doi.org/10.3732/ajb.91.11.1930" class="uri">https://doi.org/10.3732/ajb.91.11.1930</a></p>
+<p>Ellison, A. and E. Farnsworth. (2021). Effects of Prey Availability on Sarracenia Physiology at Harvard Forest 2005 ver 18. Environmental Data Initiative. <a href="https://doi.org/10.6073/pasta/26b22d09279e62fd729ffc35f9ef0174" class="uri">https://doi.org/10.6073/pasta/26b22d09279e62fd729ffc35f9ef0174</a></p>
+<p>Glenn, Bodri, M. S., &amp; Heil, M. (2012). Fungal Endophyte Diversity in Sarracenia. PloS One, 7(3), e32980–. <a href="https://doi.org/10.1371/journal.pone.0032980" class="uri">https://doi.org/10.1371/journal.pone.0032980</a></p>
+<p>Wang, Hamrick, J. ., &amp; Godt, M. J. . (2004). High genetic diversity in Sarracenia leucophylla (Sarraceniaceae), a carnivorous wetland herb. The Journal of Heredity, 95(3), 234–243. <a href="https://doi.org/10.1093/jhered/esh043" class="uri">https://doi.org/10.1093/jhered/esh043</a></p>
+<p><br>
+<br>
+</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

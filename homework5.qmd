@@ -239,7 +239,7 @@ We found that the fourth model (model4_log) which includes all predictor variabl
 
 Creating a summary table of Model 4
 
-```{r summary-table}
+```{r}
 summary(model4_log)
 table <- tidy(model4_log, conf.int = TRUE, exponentiate = TRUE) %>% 
   # make it into a flextable
