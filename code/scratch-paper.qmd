@@ -14,6 +14,10 @@ execute:
   warning: false
 ---
 
+#### Links
+
+GitHub Repo: https://github.com/veronique-let/ENVS-193DS_homework-05
+
 ## Introduction:
 
 Sarracenia, a carnivorous plant commonly referred to as pitcher plant and indigenous to the North American region, exhibits distinct leaf morphologies that act as entrapments for arthropods (Glenn et al., 2012). The study of these plants is significant in terms of ecological value as they are threatened over much of their geographic range and are studied for their contributions towards wetland health (Wang et al., 2004). An investigation into the predictions around Serracenia biomass by evaluating characteristics like form and function (morphological), and biochemical properties (physiological) along with taxonomy can give insights about growth sequences and could help assist in population assessment while predicting responses under varying environmental conditions (Ellison et al., 2004). This research analysis focuses on Sarracenia's mass prediction by observing correlations between characteristic such as the number of leaves, feed level and physiological markers including chlorophyll content/photosynthetic rates vis-à-vis its biomass parameters which are hypothesized to be positively associated to answer the question: How do Sarracenia characteristics predict biomass? The analysis of biomass prediction in Sarracenia can therefore enhance conservation efforts and contribute to our understanding of wetland ecosystems.
@@ -229,14 +233,13 @@ AIC Model 3 = 307
 
 ## Results:
 
-We found that the fourth model (model4_log) including the 'feedlevel', 'sla', 'chlorophyll', 'num_lvs' and 'num_phylls' predictors best predicted total biomass in Sarracenia. We backtransformed the estimates back to exponential (not log) to report it on the scale of the original variables and as shown in the table below, model 4 is statistically significant.
+We found that the fourth model (model4_log) which includes all predictor variables apart from 'amass' (mass-based light-saturated photosynthetic rate of the youngest leaf) best predicted total biomass in Sarracenia. This model was chosen due to it having the lowest AIC value across all other values, which in comparison to the full model including all of the predictors, model 4 has a difference in AIC value of 2. Because of this, we can conclude that model 4 demonstrates that there is a significant relationship between most of the response variables and the total biomass since the p-value is less than 0.05 (2.2e-16). With all of the p-values, except for species and feed level, being less than 0.05, this explains biologically that the combination of these predictors affects the total biomass of the plant more than just one. In addition to the model 4 results, we created a visualization of model predictions for biomass as the predictor variable and species as the response in order to observe how the Sarrencia species is correlated to biomass. The visualization shows that the Leucophylla species have the highest biomass, further demonstrating a correlation between the characteristics of the plants and improving our understanding of the relationship between different predictor variables and total biomass in Sarracenia.
 
-```{r}
+Creating a summary table of Model 4
+
+```{r summary-table}
 summary(model4_log)
 table <- tidy(model4_log, conf.int = TRUE, exponentiate = TRUE) %>% 
-  # change the p-value numbers if they're really small
-  # change the estmaes, standard error, and t-tstatistics to round to ___ digits
-  # using mutate
   # make it into a flextable
   flextable() %>% 
   # fit it to the viewer
@@ -244,9 +247,7 @@ table <- tidy(model4_log, conf.int = TRUE, exponentiate = TRUE) %>%
 table
 ```
 
-use `ggpredict()`to backtransform estimates back to exponential (not log) to report it on the scale of the original variables:
-
-c\. Visualization of model predictions for biomass as the predictor variable
+#### c. Visualization of model predictions for biomass as the predictor variable
 
 ```{r}
 # creating model of backtransformed `species`
@@ -260,8 +261,6 @@ plot(ggpredict(model4_log, terms = "species", back.transform = TRUE), add.data =
   theme(plot.title = element_text(size = 10, hjust = 0.5)) +
   theme(plot.caption = element_text(size = 5.5, hjust=0.5)) 
 ```
-
-All else held constant (of the adjusted levels in purple), total biomass of all species to remain within the range of Confidence Interval
 
 ## References
 
