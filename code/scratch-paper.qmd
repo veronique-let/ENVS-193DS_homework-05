@@ -63,7 +63,11 @@ plant <- read_csv(here("data", "knb-lter-hfr.109.18", "hf109-01-sarracenia.csv")
 We plotted the visualization of missing data to demonstrate that the absence of variables in this dataset can influence the data. The presence of a significant amount of missing data pertaining to chlorophyll, biomass, and specific leaf area can compromise the accuracy of the results obtained from it.
 
 ```{r missing-data-visualization}
-gg_miss_var(plant)
+gg_miss_var(plant) +
+labs(title = "Missing Data Visualization",
+     caption = "Missing data for chlorophyll, biomass and specific leaf area") +
+  theme(plot.title = element_text(size = 11, hjust = 0.5)) +
+  theme(plot.caption = element_text(size = 7, hjust=0.5)) 
 ```
 
 To avoid missing values skewing the analysis of a data, we subset the data by dropping N/A's to increase the accuracy of our analysis of available data.
@@ -225,17 +229,15 @@ AIC Model 3 = 307
 
 ## Results:
 
-We found that the fourth model (model4_log) including the 'feedlevel', 'sla', 'chlorophyll', 'num_lvs' and 'num_phylls' predictors best predicted total biomass in Sarracenia. As shown in the table summary below,
+We found that the fourth model (model4_log) including the 'feedlevel', 'sla', 'chlorophyll', 'num_lvs' and 'num_phylls' predictors best predicted total biomass in Sarracenia. We backtransformed the estimates back to exponential (not log) to report it on the scale of the original variables and as shown in the table below, model 4 is statistically significant.
 
 ```{r}
-summary(full_log)
-
-# table woth confidence intervals 
-table <- tidy(full_log, conf.int = TRUE) %>% 
-  # change the p-value number if they are really small
-  # change the estimates, standard error, t-statstics to round to ___ digits
+summary(model4_log)
+table <- tidy(model4_log, conf.int = TRUE, exponentiate = TRUE) %>% 
+  # change the p-value numbers if they're really small
+  # change the estmaes, standard error, and t-tstatistics to round to ___ digits
   # using mutate
-  # make into a flextable
+  # make it into a flextable
   flextable() %>% 
   # fit it to the viewer
   autofit()
@@ -244,16 +246,19 @@ table
 
 use `ggpredict()`to backtransform estimates back to exponential (not log) to report it on the scale of the original variables:
 
+c\. Visualization of model predictions for biomass as the predictor variable
+
 ```{r}
-model_pred <- ggpredict(full_log, terms = "species", back.transform = TRUE)
-
-plot(ggpredict(full_log, terms = "species", back.transform = TRUE), add.data = TRUE)
-
-plot(ggpredict(full_log, terms = "chlorophyll", back.transform = TRUE), add.data = TRUE)
-
-plot(ggpredict(full_log, terms = "sla", back.transform = TRUE), add.data = TRUE)
-
-model_pred
+# creating model of backtransformed `species`
+model_pred <- ggpredict(model4_log, terms = "species", back.transform = TRUE) 
+# ggpredict plot with species as response
+plot(ggpredict(model4_log, terms = "species", back.transform = TRUE), add.data = TRUE) + 
+# adding title/caption
+  labs(title = "Visualization of model predictions for biomass as the predictor variable",
+    caption = "Visualization of the relationship between species and biomass, showing a strong correlation between the predictor biomass and species response.") +
+# caption plot size
+  theme(plot.title = element_text(size = 10, hjust = 0.5)) +
+  theme(plot.caption = element_text(size = 5.5, hjust=0.5)) 
 ```
 
 All else held constant (of the adjusted levels in purple), total biomass of all species to remain within the range of Confidence Interval
